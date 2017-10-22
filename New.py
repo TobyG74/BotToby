@@ -126,7 +126,7 @@ wait2 = {
     'ROM':{}
     }
 
-wait3 = {
+mimic = {
     "copy":False,
     "copy2":False,
     "status":False,

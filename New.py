@@ -1995,11 +1995,13 @@ def bot(op):
 #-----------------------------------------------
             elif "Cstatus:" in msg.text:
               if msg.from_ in admin:
-                string = msg.text.replace("status1:","")
+                string = msg.text.replace("Cstatus:","")
                 if len(string.decode('utf-8')) <= 500:
                     profile = cl.getProfile()
                     profile.statusMessage = string
                     cl.updateProfile(profile)
+                else:
+                    cl.sendText(msg.to,"Done")
 #-----------------------------------------------
             elif "Cname:" in msg.text:
               if msg.from_ in admin:

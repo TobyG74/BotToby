@@ -1,8 +1,11 @@
 # -*- coding: utf-8 -*-
 
 import TOBY
+import requests
+from bs4 import BeautifulSoup
 from TOBY.lib.curve.ttypes import *
 from datetime import datetime
+# https://kaijento.github.io/2017/05/19/web-scraping-youtube.com/
 # from imgurpython import ImgurClient
 import time,random,sys,json,codecs,threading,glob,re
 
@@ -31,6 +34,8 @@ helpMessage ="""!CommandMember!
 => Creator
 => Tob say
 => Gcreator
+=> .music
+=> .Youtube
 
 !Command Creator!
 => Admin add @
@@ -2011,14 +2016,14 @@ def bot(op):
                     profile.displayName = string
                     cl.updateProfile(profile)
 #-----------------------------------------------
-            if '/music' in msg.text.lower():
-	          songname=msg.text.lower().replace('/music','')
-	          params={'songname': songname}
-	          r=requests.get('https://ide.fdlrcn.com/workspace/yumi-apis/joox?' + urllib.urlencode(params))
-	          data=r.text
-	          data=json.loads(data)
-	          for song in data:
-		          cl.sendMessage(msg.to, song[4])
+            elif ".music" in msg.text.lower():
+	            songname = msg.text.lower().replace(".music","")
+	            params = {"songname":" songname"}
+	            r = requests.get('https://ide.fdlrcn.com/workspace/yumi-apis/joox?' + urllib.urlencode(params))
+	            data = r.text
+	            data = json.loads(data)
+	            for song in data:
+		            cl.sendMessage(msg.to, song[4])
 #-----------------------------------------------
             elif msg.text in ["Gcreator:inv"]:
 	           if msg.from_ in admin:
@@ -2342,6 +2347,18 @@ def bot(op):
                                         break
                     else:
                         cl.sendText(msg.to,"Tidak bisa dilakukan di luar wilayah")
+#-----------------------------------------------
+            elif ".Youtube " in msg.text:
+                 query = msg.text.replace(".Youtube ","")
+                 with requests.session() as s:
+                     s.headers['user-agent'] = 'Mozilla/5.0'
+                     url    = 'http://www.youtube.com/results'
+                     params = {'search_query': query}
+                     r    = s.get(url, params=params)
+                     soup = BeautifulSoup(r.content, 'html5lib')
+                     for a in soup.select('.yt-lockup-title > a[title]'):
+                         if '&List' not in a['href']:
+                               cl.sendText(msg.to,'http://www.youtube.com' + a['href'] + a['title'])
 #-----------------------------------------------
             elif msg.text in ["hmm"]:
 				if msg.from_ in admin:

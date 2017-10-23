@@ -5,7 +5,7 @@ import requests
 from TOBY.lib.curve.ttypes import *
 from datetime import datetime
 # https://kaijento.github.io/2017/05/19/web-scraping-youtube.com/
-from imgurpython import ImgurClient
+# from imgurpython import ImgurClient
 import time,random,sys,json,codecs,threading,glob,re
 
 cl = TOBY.LINE()

@@ -10,14 +10,18 @@ import time,random,sys,json,codecs,threading,glob,re
 
 cl = TOBY.LINE()
 cl.login(qr=True)
-cl.loginResult()
+cl.loginResult
 
-# client_id = ''
-# client_secret = ''
-# access_token = ''
-# refresh_token = ''
+ki = TOBY.LINE()
+ki.login(qr=True)
+ki.loginResult
 
-# client = ImgurClient(client_id, client_secret, access_token, refresh_token)
+client_id = ''
+client_secret = ''
+access_token = ''
+refresh_token = ''
+
+client = ImgurClient(client_id, client_secret, access_token, refresh_token)
 
 
 ki = kk = kc = cl 
@@ -26,13 +30,13 @@ print "login success"
 reload(sys)
 sys.setdefaultencoding('utf-8')
 
-# album = None
-# image_path = 'tmp/tmp.jpg'
+album = None
+image_path = 'tmp/tmp.jpg'
 
 helpMessage ="""!CommandMember!
 => Creator
 => Tob say
-=> Gcreator
+=> GCreator
 => .music
 => .Youtube
 
@@ -97,7 +101,7 @@ Bmid = kk.getProfile().mid
 Cmid = kc.getProfile().mid
 
 Bots=[mid,Amid,Bmid,Cmid]
-admin=["ua7fb5762d5066629323d113e1266e8ca","ucc8d5eb41ba0e602b00f3711d2098855"]
+admin=["ua7fb5762d5066629323d113e1266e8ca","ucc8d5eb41ba0e602b00f3711d2098855","u975f38c4eeaaa7aa9fbf60b0e0dbe4bf"]
 creator=["ua7fb5762d5066629323d113e1266e8ca"]
 wait = {
     'contact':False,
@@ -179,34 +183,10 @@ def sendMessage(to, text, contentMetadata={}, contentType=0):
     messageReq[to] += 1
 
 def sendImage(self, to_, path):
-      M = Message(to=to_, text=None, contentType = 1)
-      M.contentMetadata = None
-      M.contentPreview = None
-      M2 = self._client.sendMessage(0,M)
-      M_id = M2.id
-      files = {
-         'file': open(path, 'rb'),
-      }
-      params = {
-         'name': 'media',
-         'oid': M_id,
-         'size': len(open(path, 'rb').read()),
-         'type': 'image',
-         'ver': '1.0',
-      }
-      data = {
-         'params': json.dumps(params)
-      }
-      r = self.post_content('https://obs-sg.line-apps.com/talk/m/upload.nhn', data=data, files=files)
-      if r.status_code != 201:
-         raise Exception('Upload image failure.')
-      return True
-
-def sendImage2(self, to_, path):
       M = Message(to=to_,contentType = 1)
       M.contentMetadata = None
       M.contentPreview = None
-      M_id = self._client.sendMessage(M).id
+      M_id = self.Talk.client.sendMessage(0,M).id
       files = {
          'file': open(path, 'rb'),
       }
@@ -220,7 +200,7 @@ def sendImage2(self, to_, path):
       data = {
          'params': json.dumps(params)
       }
-      r = self._client.post_content('https://os.line.naver.jp/talk/m/upload.nhn', data=data, files=files)
+      r = self.post_content('https://os.line.naver.jp/talk/m/upload.nhn', data=data, files=files)
       if r.status_code != 201:
          raise Exception('Upload image failure.')
       return True
@@ -235,12 +215,11 @@ def sendImageWithURL(self, to_, url):
          raise Exception('Download image failure.')
       try:
          self.sendImage(to_, path)
-      except:
-         try:
-            self.sendImage(to_, path)
-         except Exception as e:
-            raise e
-
+      except Exception as e:
+         raise e
+ 
+def post_content(self, urls, data=None, files=None):
+        return self._session.post(urls, headers=self._headers, data=data, files=files)
 
 def sendMessage(to, text, contentMetadata={}, contentType=0):
     mes = Message()
@@ -283,6 +262,7 @@ def bot(op):
            if wait["ProtectQR"] == True:
                if op.param2 not in Bots:
                    G = cl.getGroup(op.param1)
+                   G = ki.getGroup(op.param1)
                    G.preventJoinByTicket = True
                    ki.kickoutFromGroup(op.param1,[op.param2])
                    cl.updateGroup(G)

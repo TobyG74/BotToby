@@ -12,16 +12,12 @@ cl = TOBY.LINE()
 cl.login(qr=True)
 cl.loginResult
 
-ki = TOBY.LINE()
-ki.login(qr=True)
-ki.loginResult
+# client_id = ''
+# client_secret = ''
+# access_token = ''
+# refresh_token = ''
 
-client_id = ''
-client_secret = ''
-access_token = ''
-refresh_token = ''
-
-client = ImgurClient(client_id, client_secret, access_token, refresh_token)
+# client = ImgurClient(client_id, client_secret, access_token, refresh_token)
 
 
 ki = kk = kc = cl 
@@ -30,8 +26,8 @@ print "login success"
 reload(sys)
 sys.setdefaultencoding('utf-8')
 
-album = None
-image_path = 'tmp/tmp.jpg'
+# album = None
+# image_path = 'tmp/tmp.jpg'
 
 helpMessage ="""!CommandMember!
 => Creator

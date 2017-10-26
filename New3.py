@@ -6,7 +6,7 @@ from datetime import datetime
 import time,datetime,random,sys,re,os,json,subprocess,codecs,threading,glob
 
 cl = TOBY.LINE()
-cl.login(qr=True")
+cl.login(qr=True)
 cl.loginResult()
 
 ki = TOBY.LINE()
@@ -1036,6 +1036,196 @@ def bot(op):
                     ki18.updateProfile(profile)
                     ki18.sendText(msg.to,"Update Names Menjadi :" + string + "")
 #--------------------------------------------------------
+            elif "Cstatus:" in msg.text:
+              if msg.from_ in admin:
+                string = msg.text.replace("Cstatus:","")
+                if len(string.decode('utf-8')) <= 500:
+                    profile = cl.getProfile()
+                    profile.statusMessage = string
+                    cl.updateProfile(profile)
+                else:
+                    cl.sendText(msg.to,"Done")
+#---------------------------------------------------------
+            elif "Cstatus1:" in msg.text:
+              if msg.from_ in admin:
+                string = msg.text.replace("Cstatus:","")
+                if len(string.decode('utf-8')) <= 500:
+                    profile = ki.getProfile()
+                    profile.statusMessage = string
+                    ki.updateProfile(profile)
+                else:
+                    ki.sendText(msg.to,"Done")
+#---------------------------------------------------------
+            elif "Cstatus2:" in msg.text:
+              if msg.from_ in admin:
+                string = msg.text.replace("Cstatus:","")
+                if len(string.decode('utf-8')) <= 500:
+                    profile = cl.getProfile()
+                    profile.statusMessage = string
+                    ki2.updateProfile(profile)
+                else:
+                    ki2.sendText(msg.to,"Done")
+#---------------------------------------------------------
+            elif "Cstatus3:" in msg.text:
+              if msg.from_ in admin:
+                string = msg.text.replace("Cstatus:","")
+                if len(string.decode('utf-8')) <= 500:
+                    profile = ki.getProfile()
+                    profile.statusMessage = string
+                    ki3.updateProfile(profile)
+                else:
+                    ki3.sendText(msg.to,"Done")
+#---------------------------------------------------------
+            elif "Cstatus4:" in msg.text:
+              if msg.from_ in admin:
+                string = msg.text.replace("Cstatus:","")
+                if len(string.decode('utf-8')) <= 500:
+                    profile = cl.getProfile()
+                    profile.statusMessage = string
+                    ki4.updateProfile(profile)
+                else:
+                    ki4.sendText(msg.to,"Done")
+#---------------------------------------------------------
+            elif "Cstatus5:" in msg.text:
+              if msg.from_ in admin:
+                string = msg.text.replace("Cstatus:","")
+                if len(string.decode('utf-8')) <= 500:
+                    profile = ki.getProfile()
+                    profile.statusMessage = string
+                    ki5.updateProfile(profile)
+                else:
+                    ki5.sendText(msg.to,"Done")
+#---------------------------------------------------------
+            elif "Cstatus6:" in msg.text:
+              if msg.from_ in admin:
+                string = msg.text.replace("Cstatus:","")
+                if len(string.decode('utf-8')) <= 500:
+                    profile = cl.getProfile()
+                    profile.statusMessage = string
+                    ki6.updateProfile(profile)
+                else:
+                    ki6.sendText(msg.to,"Done")
+#---------------------------------------------------------
+            elif "Cstatus7:" in msg.text:
+              if msg.from_ in admin:
+                string = msg.text.replace("Cstatus:","")
+                if len(string.decode('utf-8')) <= 500:
+                    profile = ki.getProfile()
+                    profile.statusMessage = string
+                    ki7.updateProfile(profile)
+                else:
+                    ki7.sendText(msg.to,"Done")
+#---------------------------------------------------------
+            elif "Cstatus8:" in msg.text:
+              if msg.from_ in admin:
+                string = msg.text.replace("Cstatus:","")
+                if len(string.decode('utf-8')) <= 500:
+                    profile = ki.getProfile()
+                    profile.statusMessage = string
+                    ki8.updateProfile(profile)
+                else:
+                    ki8.sendText(msg.to,"Done")
+#---------------------------------------------------------
+            elif "Cstatus9:" in msg.text:
+              if msg.from_ in admin:
+                string = msg.text.replace("Cstatus:","")
+                if len(string.decode('utf-8')) <= 500:
+                    profile = ki.getProfile()
+                    profile.statusMessage = string
+                    ki9.updateProfile(profile)
+                else:
+                    ki9.sendText(msg.to,"Done")
+#---------------------------------------------------------
+            elif "Cstatus10:" in msg.text:
+              if msg.from_ in admin:
+                string = msg.text.replace("Cstatus:","")
+                if len(string.decode('utf-8')) <= 500:
+                    profile = ki.getProfile()
+                    profile.statusMessage = string
+                    ki10.updateProfile(profile)
+                else:
+                    ki10.sendText(msg.to,"Done")
+#---------------------------------------------------------
+            elif "Cstatus11:" in msg.text:
+              if msg.from_ in admin:
+                string = msg.text.replace("Cstatus:","")
+                if len(string.decode('utf-8')) <= 500:
+                    profile = ki.getProfile()
+                    profile.statusMessage = string
+                    ki11.updateProfile(profile)
+                else:
+                    ki11.sendText(msg.to,"Done")
+#---------------------------------------------------------
+            elif "Cstatus12:" in msg.text:
+              if msg.from_ in admin:
+                string = msg.text.replace("Cstatus:","")
+                if len(string.decode('utf-8')) <= 500:
+                    profile = ki.getProfile()
+                    profile.statusMessage = string
+                    ki12.updateProfile(profile)
+                else:
+                    ki12.sendText(msg.to,"Done")
+#---------------------------------------------------------
+            elif "Cstatus13:" in msg.text:
+              if msg.from_ in admin:
+                string = msg.text.replace("Cstatus:","")
+                if len(string.decode('utf-8')) <= 500:
+                    profile = ki.getProfile()
+                    profile.statusMessage = string
+                    ki13.updateProfile(profile)
+                else:
+                    ki13.sendText(msg.to,"Done")
+#---------------------------------------------------------
+            elif "Cstatus14:" in msg.text:
+              if msg.from_ in admin:
+                string = msg.text.replace("Cstatus:","")
+                if len(string.decode('utf-8')) <= 500:
+                    profile = ki.getProfile()
+                    profile.statusMessage = string
+                    ki14.updateProfile(profile)
+                else:
+                    ki14.sendText(msg.to,"Done")
+#---------------------------------------------------------
+            elif "Cstatus15:" in msg.text:
+              if msg.from_ in admin:
+                string = msg.text.replace("Cstatus:","")
+                if len(string.decode('utf-8')) <= 500:
+                    profile = ki.getProfile()
+                    profile.statusMessage = string
+                    ki15.updateProfile(profile)
+                else:
+                    ki15.sendText(msg.to,"Done")
+#---------------------------------------------------------
+            elif "Cstatus16:" in msg.text:
+              if msg.from_ in admin:
+                string = msg.text.replace("Cstatus:","")
+                if len(string.decode('utf-8')) <= 500:
+                    profile = ki.getProfile()
+                    profile.statusMessage = string
+                    ki16.updateProfile(profile)
+                else:
+                    ki16.sendText(msg.to,"Done")
+#---------------------------------------------------------
+            elif "Cstatus17:" in msg.text:
+              if msg.from_ in admin:
+                string = msg.text.replace("Cstatus:","")
+                if len(string.decode('utf-8')) <= 500:
+                    profile = ki.getProfile()
+                    profile.statusMessage = string
+                    ki17.updateProfile(profile)
+                else:
+                    ki17.sendText(msg.to,"Done")
+#---------------------------------------------------------
+            elif "Cstatus18:" in msg.text:
+              if msg.from_ in admin:
+                string = msg.text.replace("Cstatus:","")
+                if len(string.decode('utf-8')) <= 500:
+                    profile = ki.getProfile()
+                    profile.statusMessage = string
+                    ki18.updateProfile(profile)
+                else:
+                    ki18.sendText(msg.to,"Done")
+#---------------------------------------------------------
             elif "Mid:" in msg.text:
                 mmid = msg.text.replace("Mid:","")
                 msg.contentType = 13
@@ -1716,7 +1906,7 @@ def bot(op):
                                     random.choice(KAC).kickoutFromGroup(msg.to,[target])
                                     print (msg.to,[g.mid])
                                 except:
-                                    ki.sendText(msg.to,"Group cleansed")
+                                    ki.sendText(msg.to,"Group Bersihkan")
             elif "Cleanse" in msg.text:
                 if msg.toType == 2:
                     print "ok"
@@ -2129,7 +2319,7 @@ def bot(op):
                         G.preventJoinByTicket(G)
                         ki.updateGroup(G)
 #-----------------------------------------------
-            elif "Kb1 in" in msg.text:
+            elif "Bot1 in" in msg.text:
                         G = cl.getGroup(msg.to)
                         ginfo = cl.getGroup(msg.to)
                         G.preventJoinByTicket = False
@@ -2145,7 +2335,7 @@ def bot(op):
                         G.preventJoinByTicket(G)
                         ki.updateGroup(G)
 #-----------------------------------------------
-            elif "Kb2 in" in msg.text:
+            elif "Bot2 in" in msg.text:
                         G = cl.getGroup(msg.to)
                         ginfo = cl.getGroup(msg.to)
                         G.preventJoinByTicket = False
@@ -2161,7 +2351,7 @@ def bot(op):
                         G.preventJoinByTicket(G)
                         ki2.updateGroup(G)
 #-----------------------------------------------
-            elif "Kb3 in" in msg.text:
+            elif "Bot3 in" in msg.text:
                         G = cl.getGroup(msg.to)
                         ginfo = cl.getGroup(msg.to)
                         G.preventJoinByTicket = False
@@ -2177,7 +2367,7 @@ def bot(op):
                         G.preventJoinByTicket(G)
                         ki2.updateGroup(G)
 #-----------------------------------------------
-            elif "Kb4 in" in msg.text:
+            elif "Bot4 in" in msg.text:
                         G = cl.getGroup(msg.to)
                         ginfo = cl.getGroup(msg.to)
                         G.preventJoinByTicket = False
@@ -2193,7 +2383,7 @@ def bot(op):
                         G.preventJoinByTicket(G)
                         ki3.updateGroup(G)
 #-----------------------------------------------
-            elif "Kb5 in" in msg.text:
+            elif "Bot5 in" in msg.text:
                         G = cl.getGroup(msg.to)
                         ginfo = cl.getGroup(msg.to)
                         G.preventJoinByTicket = False
@@ -2209,7 +2399,7 @@ def bot(op):
                         G.preventJoinByTicket(G)
                         ki5.updateGroup(G)
 #-----------------------------------------------
-            elif "Kb6 in" in msg.text:
+            elif "Bot6 in" in msg.text:
                         G = cl.getGroup(msg.to)
                         ginfo = cl.getGroup(msg.to)
                         G.preventJoinByTicket = False
@@ -2225,7 +2415,7 @@ def bot(op):
                         G.preventJoinByTicket(G)
                         ki6.updateGroup(G)
 #-----------------------------------------------
-            elif "Kb7 in" in msg.text:
+            elif "Bot7 in" in msg.text:
                         G = cl.getGroup(msg.to)
                         ginfo = cl.getGroup(msg.to)
                         G.preventJoinByTicket = False
@@ -2241,7 +2431,7 @@ def bot(op):
                         G.preventJoinByTicket(G)
                         ki7.updateGroup(G)
 #-----------------------------------------------
-            elif "Kb8 in" in msg.text:
+            elif "Bot8 in" in msg.text:
                         G = cl.getGroup(msg.to)
                         ginfo = cl.getGroup(msg.to)
                         G.preventJoinByTicket = False
@@ -2257,7 +2447,7 @@ def bot(op):
                         G.preventJoinByTicket(G)
                         ki8.updateGroup(G)
 #-----------------------------------------------
-            elif "Kb9 in" in msg.text:
+            elif "Bot9 in" in msg.text:
                         G = cl.getGroup(msg.to)
                         ginfo = cl.getGroup(msg.to)
                         G.preventJoinByTicket = False
@@ -2273,7 +2463,7 @@ def bot(op):
                         G.preventJoinByTicket(G)
                         ki9.updateGroup(G)
 #-----------------------------------------------
-            elif "Kb10 in" in msg.text:
+            elif "Bot10 in" in msg.text:
                         G = cl.getGroup(msg.to)
                         ginfo = cl.getGroup(msg.to)
                         G.preventJoinByTicket = False
@@ -2289,7 +2479,7 @@ def bot(op):
                         G.preventJoinByTicket(G)
                         ki10.updateGroup(G)
 #-----------------------------------------------
-            elif "Kb11 in" in msg.text:
+            elif "Bot11 in" in msg.text:
                         G = cl.getGroup(msg.to)
                         ginfo = cl.getGroup(msg.to)
                         G.preventJoinByTicket = False
@@ -2305,7 +2495,7 @@ def bot(op):
                         G.preventJoinByTicket(G)
                         ki11.updateGroup(G)
 #-----------------------------------------------
-            elif "Kb12 in" in msg.text:
+            elif "Bot12 in" in msg.text:
                         G = cl.getGroup(msg.to)
                         ginfo = cl.getGroup(msg.to)
                         G.preventJoinByTicket = False
@@ -2321,7 +2511,7 @@ def bot(op):
                         G.preventJoinByTicket(G)
                         ki12.updateGroup(G)
 #-----------------------------------------------
-            elif "Kb13 in" in msg.text:
+            elif "Bot13 in" in msg.text:
                         G = cl.getGroup(msg.to)
                         ginfo = cl.getGroup(msg.to)
                         G.preventJoinByTicket = False
@@ -2337,7 +2527,7 @@ def bot(op):
                         G.preventJoinByTicket(G)
                         ki13.updateGroup(G)
 #-----------------------------------------------
-            elif "Kb14 in" in msg.text:
+            elif "Bot14 in" in msg.text:
                         G = cl.getGroup(msg.to)
                         ginfo = cl.getGroup(msg.to)
                         G.preventJoinByTicket = False
@@ -2353,7 +2543,7 @@ def bot(op):
                         G.preventJoinByTicket(G)
                         ki14.updateGroup(G)
 #-----------------------------------------------
-            elif "Kb15 in" in msg.text:
+            elif "Bot15 in" in msg.text:
                         G = cl.getGroup(msg.to)
                         ginfo = cl.getGroup(msg.to)
                         G.preventJoinByTicket = False
@@ -2369,7 +2559,7 @@ def bot(op):
                         G.preventJoinByTicket(G)
                         ki15.updateGroup(G)
 #-----------------------------------------------
-            elif "Kb16 in" in msg.text:
+            elif "Bot16 in" in msg.text:
                         G = cl.getGroup(msg.to)
                         ginfo = cl.getGroup(msg.to)
                         G.preventJoinByTicket = False
@@ -2384,7 +2574,7 @@ def bot(op):
                         print "kicker ok"
                         G.preventJoinByTicket(G)
                         ki16.updateGroup(G)
-            elif "Kb17 in" in msg.text:
+            elif "Bot17 in" in msg.text:
                         G = cl.getGroup(msg.to)
                         ginfo = cl.getGroup(msg.to)
                         G.preventJoinByTicket = False
@@ -2399,7 +2589,7 @@ def bot(op):
                         print "kicker ok"
                         G.preventJoinByTicket(G)
                         ki17.updateGroup(G)
-            elif "Kb18 in" in msg.text:
+            elif "Bot18 in" in msg.text:
                         G = cl.getGroup(msg.to)
                         ginfo = cl.getGroup(msg.to)
                         G.preventJoinByTicket = False
@@ -2415,7 +2605,7 @@ def bot(op):
                         G.preventJoinByTicket(G)
                         ki18.updateGroup(G)
 #-----------------------------------------------
-            elif msg.text.lower() == 'pulang':
+            elif msg.text.lower() == 'Pulang':
                 if msg.toType == 2:
                     ginfo = cl.getGroup(msg.to)
                     try:
@@ -2441,7 +2631,7 @@ def bot(op):
                     except:
                         pass
 #-----------------------------------------------
-            elif "Kb1 bye" in msg.text:
+            elif "Bot1 bye" in msg.text:
                 if msg.toType == 2:
                     ginfo = cl.getGroup(msg.to)
                     try:
@@ -2449,7 +2639,7 @@ def bot(op):
                     except:
                         pass
 #-----------------------------------------------
-            elif "Kb2 bye" in msg.text:
+            elif "Bot2 bye" in msg.text:
                 if msg.toType == 2:
                     ginfo = cl.getGroup(msg.to)
                     try:
@@ -2457,7 +2647,7 @@ def bot(op):
                     except:
                         pass
 #-----------------------------------------------
-            elif "Kb3 bye" in msg.text:
+            elif "Bot3 bye" in msg.text:
                 if msg.toType == 2:
                     ginfo = cl.getGroup(msg.to)
                     try:
@@ -2465,7 +2655,7 @@ def bot(op):
                     except:
                         pass
 #-----------------------------------------------
-            elif "Kb4 bye" in msg.text:
+            elif "Bot4 bye" in msg.text:
                 if msg.toType == 2:
                     ginfo = cl.getGroup(msg.to)
                     try:
@@ -2473,7 +2663,7 @@ def bot(op):
                     except:
                         pass
 #-----------------------------------------------
-            elif "Kb5 bye" in msg.text:
+            elif "Bot5 bye" in msg.text:
                 if msg.toType == 2:
                     ginfo = cl.getGroup(msg.to)
                     try:
@@ -2481,7 +2671,7 @@ def bot(op):
                     except:
                         pass
 #-----------------------------------------------
-            elif "Kb6 bye" in msg.text:
+            elif "Bot6 bye" in msg.text:
                 if msg.toType == 2:
                     ginfo = cl.getGroup(msg.to)
                     try:
@@ -2489,7 +2679,7 @@ def bot(op):
                     except:
                         pass
 #-----------------------------------------------
-            elif "Kb7 bye" in msg.text:
+            elif "Bot7 bye" in msg.text:
                 if msg.toType == 2:
                     ginfo = cl.getGroup(msg.to)
                     try:
@@ -2497,7 +2687,7 @@ def bot(op):
                     except:
                         pass
 #-----------------------------------------------
-            elif "Kb8 bye" in msg.text:
+            elif "Bot8 bye" in msg.text:
                 if msg.toType == 2:
                     ginfo = cl.getGroup(msg.to)
                     try:
@@ -2505,7 +2695,7 @@ def bot(op):
                     except:
                         pass
 #-----------------------------------------------
-            elif "Kb9 bye" in msg.text:
+            elif "Bot9 bye" in msg.text:
                 if msg.toType == 2:
                     ginfo = cl.getGroup(msg.to)
                     try:
@@ -2513,7 +2703,7 @@ def bot(op):
                     except:
                         pass
 #-----------------------------------------------
-            elif "Kb10 bye" in msg.text:
+            elif "Bot10 bye" in msg.text:
                 if msg.toType == 2:
                     ginfo = cl.getGroup(msg.to)
                     try:
@@ -2521,7 +2711,7 @@ def bot(op):
                     except:
                         pass
 #-----------------------------------------------
-            elif "Kb11 bye" in msg.text:
+            elif "Bot11 bye" in msg.text:
                 if msg.toType == 2:
                     ginfo = cl.getGroup(msg.to)
                     try:
@@ -2529,7 +2719,7 @@ def bot(op):
                     except:
                         pass
 #-----------------------------------------------
-            elif "Kb12 bye" in msg.text:
+            elif "Bot12 bye" in msg.text:
                 if msg.toType == 2:
                     ginfo = cl.getGroup(msg.to)
                     try:
@@ -2537,7 +2727,7 @@ def bot(op):
                     except:
                         pass
 #-----------------------------------------------
-            elif "Kb13 bye" in msg.text:
+            elif "Bot13 bye" in msg.text:
                 if msg.toType == 2:
                     ginfo = cl.getGroup(msg.to)
                     try:
@@ -2545,7 +2735,7 @@ def bot(op):
                     except:
                         pass
 #-----------------------------------------------
-            elif "Kb14 bye" in msg.text:
+            elif "Bot14 bye" in msg.text:
                 if msg.toType == 2:
                     ginfo = cl.getGroup(msg.to)
                     try:
@@ -2553,7 +2743,7 @@ def bot(op):
                     except:
                         pass
 #-----------------------------------------------
-            elif "Kb15 bye" in msg.text:
+            elif "Bot15 bye" in msg.text:
                 if msg.toType == 2:
                     ginfo = cl.getGroup(msg.to)
                     try:
@@ -2561,7 +2751,7 @@ def bot(op):
                     except:
                         pass
 #-----------------------------------------------
-            elif "Kb16 bye" in msg.text:
+            elif "Bot16 bye" in msg.text:
                 if msg.toType == 2:
                     ginfo = cl.getGroup(msg.to)
                     try:
@@ -2577,7 +2767,7 @@ def bot(op):
                     except:
                         pass
 #-----------------------------------------------
-            elif "Kb18 bye" in msg.text:
+            elif "Bot18 bye" in msg.text:
                 if msg.toType == 2:
                     ginfo = cl.getGroup(msg.to)
                     try:
@@ -2585,15 +2775,8 @@ def bot(op):
                     except:
                         pass
 #-----------------------------------------------
-            elif "Kb Key" in msg.text:
-                ki.sendText(msg.to,"""      􀠁􀆩􏿿􀠁􀆩􏿿 KITSUNE BOT [KB] 􀠁􀆩􏿿􀠁􀆩􏿿  \n\n 􀠁􀆩􏿿 key Only Kicker 􀠁􀆩􏿿 \n\n􀠁􀆩􏿿[Kb1 in]\n􀠁􀆩􏿿[1name:]\n􀠁􀆩􏿿[B Cancel]\n􀠁􀆩􏿿[kick @]\n􀠁􀆩􏿿[Ban @]\n􀠁􀆩􏿿[kill]\n􀠁􀆩􏿿[BotChat]\n􀠁􀆩􏿿[Respons]\n􀠁􀆩􏿿[Kb1 Gift]\n􀠁􀆩􏿿[Kb1 bye]\n\n   
-  
-        
-  
-☆ Ķ͈̤̱͎̱̤̞̭͂̐͒́̀͗͞Ị̵̻̝̘͍͛̏̃͊̉͠ T̩͖͎̹̫͈̿̆̏́̑́S̤̲̯̤̹̲̲̘̏̋̈́̿͒ͅŲ̶̼̲̺̣̬̔̿͐̾̾͘Ṇ̶̨̛̲̭̝̲̝̪̎̾̈́͘͢͜͞É͎̱̺̜̐̀̿͘̕̕͢  B̴̡̛͈̖̺͖̙̝̩̞̐̂̀͂̏̚͟͠O̸̡̩̣̲̣̜̊̑̾̾͊̃͘͜ͅT Ç̵͔̟̫̰̮̺̟̥̂̋̂͋͐͛͑̔̚̚O̷̧̺̠̰̳̿́͆̕̕͠ͅ N̶͖̜̻̰͍̮̼̒́̐̑͒́̕ͅŢ̢̯̱͕̠͙̤̙̄̂͗̊̈́̕R̶̛̙̩̱̗̯͌̈͆̆Ơ̴̡͈̖̺͖̙̝̩̞̐̂̀͂̏̚͟͠L̸̡̩̣̲̣̜̊̑̾̾͊̃͘͜ͅ  ☆
-
-
-
+            elif "Bot Key" in msg.text:
+                ki.sendText(msg.to,"""      􀠁􀆩􏿿􀠁􀆩􏿿 CYBER BOT CRIME [=] 􀠁􀆩􏿿􀠁􀆩􏿿  \n\n 􀠁􀆩􏿿 key Only Kicker 􀠁􀆩􏿿 \n\n􀠁􀆩􏿿[Kb1 in]\n􀠁􀆩􏿿[1name:]\n􀠁􀆩􏿿[B Cancel]\n􀠁􀆩􏿿[kick @]\n􀠁􀆩􏿿[Ban @]\n􀠁􀆩􏿿[kill]\n􀠁􀆩􏿿[BotChat]\n􀠁􀆩􏿿[Respons]\n􀠁􀆩􏿿[Kb1 Gift]\n􀠁􀆩􏿿[Kb1 bye]\n\n   
 """)
 #-----------------------------------------------
             elif msg.text.lower() == 'welcome':
@@ -2604,7 +2787,7 @@ def bot(op):
 				bctxt = msg.text.replace("Hi ","")
 				ki19.sendText(msg.to,(bctxt))
             elif "Say " in msg.text:
-				bctxt = msg.text.replace("Say ","")
+				bctxt = msg.text.replace("Bot Say ","")
 				ki.sendText(msg.to,(bctxt))
 				ki2.sendText(msg.to,(bctxt))
 				ki3.sendText(msg.to,(bctxt))

@@ -2040,7 +2040,7 @@ def bot(op):
 #-----------------------------------------------
 
 #-----------------------------------------------
-            elif msg.text.lower() == 'kitsune':
+            elif msg.text.lower() == 'Masuk':
                         G = cl.getGroup(msg.to)
                         ginfo = cl.getGroup(msg.to)
                         G.preventJoinByTicket = False

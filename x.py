@@ -13,6 +13,10 @@ ki = TOBY.LINE()
 ki.login(qr=True)
 ki.loginResult()
 
+ki2 = TOBY.LINE()
+ki2.login(qr=True)
+ki2.loginResult()
+
 print u"login success"
 reload(sys)
 sys.setdefaultencoding('utf-8')

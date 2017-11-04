@@ -30,20 +30,29 @@ sys.setdefaultencoding('utf-8')
 # album = None
 # image_path = 'tmp/tmp.jpg'
 
-helpMessage ="""!CommandMember!
+helpMessage ="""
+================================
+        !CommandMember!
+================================
+
 => Creator
 => Tob say
 => GCreator
-=> .music
-=> .Youtube
+=> Apakah
 
-!Command Creator!
+================================
+        !Command Creator!
+================================
+
 => Admin add @
 => Admin remove @
 => Adminlist
 => InviteMeTo:
 
-!Command Admin!
+================================
+        !Command Admin!
+================================
+
 => Id
 => Mid
 => Mid @
@@ -68,14 +77,20 @@ helpMessage ="""!CommandMember!
 => Steal + Mid
 => Steal @
 
-!Command Mimic!
+================================
+         !Command Mimic!
+================================
+
 => Mimic:on
 => Mimic @
 => Mimic:add: @
 => Mimic:del: @
 => ListTarget
 
-!CommandPenting!
+================================
+         !CommandPenting!
+================================
+
 => Guest On/Off
 => Mad On/Off
 => Qr On/Off
@@ -1996,6 +2011,12 @@ def bot(op):
                     profile = ki.getProfile()
                     profile.displayName = string
                     Ki.updateProfile(profile)
+#-----------------------------------------------
+            elif "Apakah " in msg.text:
+                tanya = msg.text.replace("Apakah ","")
+                jawab = ("Ya","Tidak")
+                jawaban = random.choice(jawab)
+                cl.sendText(msg.to,jawaban)
 #-----------------------------------------------
             elif ".music" in msg.text.lower():
 	            songname = msg.text.lower().replace(".music","")

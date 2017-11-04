@@ -31,27 +31,27 @@ sys.setdefaultencoding('utf-8')
 # image_path = 'tmp/tmp.jpg'
 
 helpMessage ="""
-================================
-        !CommandMember!
-================================
+==============================
+       !CommandMember!
+==============================
 
 => Creator
 => Tob say
 => GCreator
 => Apakah
 
-================================
-        !Command Creator!
-================================
+==============================
+       !Command Creator!
+==============================
 
-=> Admin add @
-=> Admin remove @
+=> Admadd @
+=> Admrem @
 => Adminlist
 => InviteMeTo:
 
-================================
-        !Command Admin!
-================================
+==============================
+       !Command Admin!
+==============================
 
 => Id
 => Mid
@@ -75,11 +75,11 @@ helpMessage ="""
 => Spam:
 => Check > Absen
 => Steal + Mid
-=> Steal @
+=> Steal dp @
 
-================================
-         !Command Mimic!
-================================
+==============================
+       !Command Mimic!
+==============================
 
 => Mimic:on
 => Mimic @
@@ -87,9 +87,9 @@ helpMessage ="""
 => Mimic:del: @
 => ListTarget
 
-================================
-         !CommandPenting!
-================================
+==============================
+       !CommandPenting!
+==============================
 
 => Guest On/Off
 => Mad On/Off
@@ -103,7 +103,7 @@ helpMessage ="""
 => Vk
 => Mayhem
 
-==================================================
+==============================
 BOT : TOBY
 SUPPORT BY : CYBER BOT CRIME
 Hanya Admin Yang Bisa Menggunakan Bot
@@ -217,6 +217,53 @@ def sendImage(self, to_, path):
          raise Exception('Upload image failure.')
       return True
 
+def sendImage(self, to_, path):
+      M = Message(to=to_, text=None, contentType = 1)
+      M.contentMetadata = None
+      M.contentPreview = None
+      M2 = self._client.sendMessage(0,M)
+      M_id = M2.id
+      files = {
+         'file': open(path, 'rb'),
+      }
+      params = {
+         'name': 'media',
+         'oid': M_id,
+         'size': len(open(path, 'rb').read()),
+         'type': 'image',
+         'ver': '1.0',
+      }
+      data = {
+         'params': json.dumps(params)
+      }
+      r = self.post_content('https://obs-sg.line-apps.com/talk/m/upload.nhn', data=data, files=files)
+      if r.status_code != 201:
+         raise Exception('Upload image failure.')
+      return True
+
+def sendImage2(self, to_, path):
+      M = Message(to=to_,contentType = 1)
+      M.contentMetadata = None
+      M.contentPreview = None
+      M_id = self._client.sendMessage(M).id
+      files = {
+         'file': open(path, 'rb'),
+      }
+      params = {
+         'name': 'media',
+         'oid': M_id,
+         'size': len(open(path, 'rb').read()),
+         'type': 'image',
+         'ver': '1.0',
+      }
+      data = {
+         'params': json.dumps(params)
+      }
+      r = self._client.post_content('https://os.line.naver.jp/talk/m/upload.nhn', data=data, files=files)
+      if r.status_code != 201:
+         raise Exception('Upload image failure.')
+      return True
+
 def sendImageWithURL(self, to_, url):
       path = '%s/pythonLine-%i.data' % (tempfile.gettempdir(), randint(0, 9))
       r = requests.get(url, stream=True)
@@ -227,9 +274,12 @@ def sendImageWithURL(self, to_, url):
          raise Exception('Download image failure.')
       try:
          self.sendImage(to_, path)
-      except Exception as e:
-         raise e
- 
+      except:
+         try:
+            self.sendImage(to_, path)
+         except Exception as e:
+            raise e
+
 def post_content(self, urls, data=None, files=None):
         return self._session.post(urls, headers=self._headers, data=data, files=files)
 
@@ -2094,15 +2144,13 @@ def bot(op):
                     cl.sendMessage(msg)
                     ki.sendMessage(msg)
 #-----------------------------------------------
-            elif "Admin add @" in msg.text:
+            elif "Admadd @" in msg.text:
                 if msg.from_ in creator:
                     print "[Command]Staff add executing"
                     _name = msg.text.replace("Admin add @","")
                     _nametarget = _name.rstrip('  ')
                     gs = cl.getGroup(msg.to)
                     gs = ki.getGroup(msg.to)
-                    gs = kk.getGroup(msg.to)
-                    gs = kc.getGroup(msg.to)
                     targets = []
                     for g in gs.members:
                         if _nametarget == g.displayName:
@@ -2124,15 +2172,13 @@ def bot(op):
                     cl.sendText(msg.to,"Lu bukan admin")
                     cl.sendText(msg.to,"Admin Tidak Bisa Menggunakan")
                     ki.sendText(msg.to,"Cuma Owner Yang bisa Menggunakan")
-            elif "Admin remove @" in msg.text:
+            elif "Admrem @" in msg.text:
                 if msg.from_ in creator:
                     print "[Command]Staff remove executing"
                     _name = msg.text.replace("Admin remove @","")
                     _nametarget = _name.rstrip('  ')
                     gs = cl.getGroup(msg.to)
                     gs = ki.getGroup(msg.to)
-                    gs = kk.getGroup(msg.to)
-                    gs = kc.getGroup(msg.to)
                     targets = []
                     for g in gs.members:
                         if _nametarget == g.displayName:
@@ -2303,23 +2349,27 @@ def bot(op):
                         cl.sendText(msg.to,"Auto Block On")
                     else:
                         cl.sendText(msg.to,"Block On")
-#-----------------------------------------------
-            elif "Steal " in msg.text:
-                if msg.from_ in admin:
-                    salsa = msg.text.replace("Steal ","")
-                    Manis = cl.getContact(salsa)
-                    Imoet = "http://dl.profile.line-cdn.net/" + contact.pictureStatus
-                    try:
-                        cover = cl.channel.getCover(Manis)
-                    except:
-                        cover = ""
-                    cl.sendText(msg.to,"Gambar Foto Profilenya")
-                    cl.sendImageWithURL(msg.to,Imoet)
-                    if cover == "":
-                        cl.sendText(msg.to,"User tidak memiliki cover atau sejenisnya")
-                    else:
-                        cl.sendText(msg.to,"Gambar Covernya")
-                        cl.sendImageWithURL(msg.to,cover)
+#------------------------------------------------------
+            elif "Steal @" in msg.text:            
+                   print "[Command]dp executing"
+                   _name = msg.text.replace("Steal dp @","")
+                   _nametarget = _name.rstrip('  ')
+                   gs = cl.getGroup(msg.to)
+                   targets = []
+                   for g in gs.members:
+                       if _nametarget == g.displayName:
+                           targets.append(g.mid)
+                   if targets == []:
+                       ki.sendText(msg.to,"Contact not found")
+                   else:
+                       for target in targets:
+                           try:
+                               contact = cl.getContact(target)
+                               path = "http://dl.profile.line-cdn.net/" + contact.pictureStatus
+                               cl.sendImageWithURL(msg.to, path)
+                           except:
+                               pass
+                   print "[Command]dp executed"
 #-----------------------------------------------
             elif msg.from_ in mimic["target"] and mimic["status"] == True and mimic["target"][msg.from_] == True:
             	text = msg.text

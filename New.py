@@ -39,6 +39,7 @@ helpMessage ="""
 => Tob say
 => GCreator
 => Apakah
+=> Rate
 
 ==============================
        !Command Creator!
@@ -55,7 +56,6 @@ helpMessage ="""
 
 => Id
 => Mid
-=> Mid @
 => Me
 => Urloff
 => Urlon
@@ -75,7 +75,7 @@ helpMessage ="""
 => Spam:
 => Check > Absen
 => Steal + Mid
-=> Steal dp @
+=> Steal @
 
 ==============================
        !Command Mimic!
@@ -195,29 +195,6 @@ def sendMessage(to, text, contentMetadata={}, contentType=0):
     messageReq[to] += 1
 
 def sendImage(self, to_, path):
-      M = Message(to=to_,contentType = 1)
-      M.contentMetadata = None
-      M.contentPreview = None
-      M_id = self.Talk.client.sendMessage(0,M).id
-      files = {
-         'file': open(path, 'rb'),
-      }
-      params = {
-         'name': 'media',
-         'oid': M_id,
-         'size': len(open(path, 'rb').read()),
-         'type': 'image',
-         'ver': '1.0',
-      }
-      data = {
-         'params': json.dumps(params)
-      }
-      r = self.post_content('https://os.line.naver.jp/talk/m/upload.nhn', data=data, files=files)
-      if r.status_code != 201:
-         raise Exception('Upload image failure.')
-      return True
-
-def sendImage(self, to_, path):
       M = Message(to=to_, text=None, contentType = 1)
       M.contentMetadata = None
       M.contentPreview = None
@@ -279,9 +256,6 @@ def sendImageWithURL(self, to_, url):
             self.sendImage(to_, path)
          except Exception as e:
             raise e
-
-def post_content(self, urls, data=None, files=None):
-        return self._session.post(urls, headers=self._headers, data=data, files=files)
 
 def sendMessage(to, text, contentMetadata={}, contentType=0):
     mes = Message()
@@ -2008,7 +1982,7 @@ def bot(op):
 					msg.contentMetadata = {'mid': "uc8e2c2b906e2322592c6d8f91a0957f7"}
 					cl.sendText(msg.to,"MyCreator")
 					ki.sendMessage(msg)
-#-------------Fungsi Creator Finish-----------------#
+#-----------------------------------------------
             elif "Spam: " in msg.text:
               if msg.from_ in admin:
                 txt = msg.text.split(" ")
@@ -2027,6 +2001,45 @@ def bot(op):
                         cl.sendText(msg.to, tulisan)
                     else:
                         cl.sendText(msg.to, "Kelebihan batas :v")
+#-----------------------------------------------
+            elif msg.text == "Check":
+                    cl.sendText(msg.to, "hmm..")
+                    try:
+                        del wait2['readPoint'][msg.to]
+                        del wait2['readMember'][msg.to]
+                    except:
+                        pass
+                    now2 = datetime.now()
+                    wait2['readPoint'][msg.to] = msg.id
+                    wait2['readMember'][msg.to] = ""
+                    wait2['ROM'][msg.to] = {}
+                    wait2['setTime'][msg.to] = datetime.today().strftime('%Y-%m-%d %H:%M:%S')
+                    print wait2
+
+            elif msg.text == "Absen":
+                    if msg.to in wait2['readPoint']:
+                        if wait2["ROM"][msg.to].items() == []:
+                            chiya = ""
+                        else:
+                            chiya = ""
+                            for rom in wait2["ROM"][msg.to].items():
+                                print rom
+                                chiya += rom[1] + "\n"
+
+                        cl.sendText(msg.to, "== Bakekok Sider == %s\nthat's it\n\nPeople who have ignored reads\n%skampret lo sider. ♪\n\nReading point creation date n time:\n[%s]"  % (wait2['readMember'][msg.to],chiya,setTime[msg.to]))
+                    else:
+                        cl.sendText(msg.to, "An already read point has not been set.\n「set」you can send ♪ read point will be created ♪")
+#-----------------------------------------------
+            elif msg.text in ["Gcreator:inv"]:
+	           if msg.from_ in admin:
+                    ginfo = cl.getGroup(msg.to)
+                    gCreator = ginfo.creator.mid
+                    try:
+                       cl.findAndAddContactsByMid(gCreator)
+                       cl.inviteIntoGroup(msg.to,[gCreator])
+                       print "success inv gCreator"
+                    except:
+                       pass
 #-----------------------------------------------
             elif "Cstatus:" in msg.text:
               if msg.from_ in admin:
@@ -2067,6 +2080,11 @@ def bot(op):
                 jawab = ("Ya","Tidak")
                 jawaban = random.choice(jawab)
                 cl.sendText(msg.to,jawaban)
+            elif "Rate " in msg.text:
+                tanya = msg.text.replace("Rate ","")
+                jawab = ("10%","20%","30%","40%","50%","60%","70%","80%","90%","100%")
+                jawaban = random.choice(jawab)
+                cl.sendText(msg.to,jawaban)
 #-----------------------------------------------
             elif ".music" in msg.text.lower():
 	            songname = msg.text.lower().replace(".music","")
@@ -2076,35 +2094,6 @@ def bot(op):
 	            data = json.loads(data)
 	            for song in data:
 		            cl.sendMessage(msg.to, song[4])
-#-----------------------------------------------
-            elif msg.text in ["Gcreator:inv"]:
-	           if msg.from_ in admin:
-                    ginfo = cl.getGroup(msg.to)
-                    gCreator = ginfo.creator.mid
-                    try:
-                       cl.findAndAddContactsByMid(gCreator)
-                       cl.inviteIntoGroup(msg.to,[gCreator])
-                       print "success inv gCreator"
-                    except:
-                       pass
-#-----------------------------------------------
-            elif "Stalk " in msg.text:
-                 print "[Command]Stalk executing"
-                 stalkID = msg.text.replace("Stalk ","")
-                 subprocess.call(["instaLooter",stalkID,"tmp/","-n","1"])   
-                 files = glob.glob("tmp/*.jpg")
-                 for file in files:
-                     os.rename(file,"tmp/tmp.jpg")
-                 fileTmp = glob.glob("tmp/tmp.jpg")
-                 if not fileTmp:
-                     cl.sendText(msg.to, "Image not found, maybe the account haven't post a single picture or the account is private")
-                     print "[Command]Stalk,executed - no image found"
-                 else:
-                     image = upload_tempimage(client)
-                     cl.sendText(msg.to, format(image['link']))
-                     subprocess.call(["sudo","rm","-rf","tmp/tmp.jpg"])
-                     print "[Command]Stalk executed - succes"
-            
 #-----------------------------------------------
             elif msg.text in ["Backup","backup"]:
                 if msg.from_ in admin:
@@ -2126,7 +2115,7 @@ def bot(op):
                             cl.inviteIntoGroup(gid,[msg.from_])
                         except:
                             cl.sendText(msg.to,"Mungkin saya tidak di dalaam grup itu")
-#-----------------------------------------------
+#------------------------------------------------
             elif msg.text in ["Gcreator"]:
               if msg.toType == 2:
                     msg.contentType = 13
@@ -2147,10 +2136,9 @@ def bot(op):
             elif "Admadd @" in msg.text:
                 if msg.from_ in creator:
                     print "[Command]Staff add executing"
-                    _name = msg.text.replace("Admin add @","")
+                    _name = msg.text.replace("Admadd @","")
                     _nametarget = _name.rstrip('  ')
                     gs = cl.getGroup(msg.to)
-                    gs = ki.getGroup(msg.to)
                     targets = []
                     for g in gs.members:
                         if _nametarget == g.displayName:
@@ -2175,10 +2163,9 @@ def bot(op):
             elif "Admrem @" in msg.text:
                 if msg.from_ in creator:
                     print "[Command]Staff remove executing"
-                    _name = msg.text.replace("Admin remove @","")
+                    _name = msg.text.replace("Admrem @","")
                     _nametarget = _name.rstrip('  ')
                     gs = cl.getGroup(msg.to)
-                    gs = ki.getGroup(msg.to)
                     targets = []
                     for g in gs.members:
                         if _nametarget == g.displayName:
@@ -2265,27 +2252,28 @@ def bot(op):
                       cl.sendText(msg.to,"Succes Banned")
                    except:
                       pass
-#-----------------------------------------------
-            elif "Steal @" in msg.text:
-                if msg.from_ in admin:
-                    _name = msg.text.replace("Steal @","")
-                    _nametarget = _name.rstrip('  ')
-                    gs = cl.getGroup(msg.to)
-                    targets = []
-                    for g in gs.members:
-                        if _nametarget == g.displayName:
-                            targets.append(g.mid)
-                    if targets == []:
-                        cl.sendMassage(msg.to,"Contact not found")
-                    else:
-                        for target in targets:
-                            try:
-                                contact = cl.getContact(target)
-                                path = "http://dl.profile.line-cdn.net/" + contact.pictureStatus
-                                cl.sendImageWithURL(msg.to, path)
-                            except:
-                                pass
-#-----------------------------------------------
+#------------------------------------------------------
+            elif "Steal @" in msg.text:            
+                   print "[Command]dp executing"
+                   _name = msg.text.replace("Steal @","")
+                   _nametarget = _name.rstrip('  ')
+                   gs = cl.getGroup(msg.to)
+                   targets = []
+                   for g in gs.members:
+                       if _nametarget == g.displayName:
+                           targets.append(g.mid)
+                   if targets == []:
+                       ki.sendText(msg.to,"Contact not found")
+                   else:
+                       for target in targets:
+                           try:
+                               contact = cl.getContact(target)
+                               path = "http://dl.profile.line-cdn.net/" + contact.pictureStatus
+                               cl.sendImageWithURL(msg.to, path)
+                           except:
+                               pass
+                   print "[Command]dp executed"
+#-----------------------------------------------------------
             elif msg.text in ["Protect Off","Mode Off"]:
               if msg.from_ in admin:
                 if wait["Protectgroupname"] == False:
@@ -2533,17 +2521,6 @@ def bot(op):
 				if msg.from_ in admin:
 					cl.sendText(msg.to,"Bot1 Respon")
 					ki.sendText(msg.to,"Bot2 Respon")
-#-----------------------------------------------
-            elif "Mid @" in msg.text:
-            	if msg.from_ in admin:
-                  _name = msg.text.replace("Mid @","")
-                  _nametarget = _name.rstrip(' ')
-                  gs = cl.getGroup(msg.to),
-                  for g in gs.members:
-                      if _nametarget == g.displayName:
-                          cl.sendText(msg.to, g.mid)
-                      else:
-                          pass
 #-----------------------------------------------
             elif msg.text in ["Sp","Speed","speed"]:
 				if msg.from_ in admin:

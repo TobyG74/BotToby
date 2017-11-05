@@ -32,85 +32,83 @@ sys.setdefaultencoding('utf-8')
 
 helpMessage ="""
 ========================
-     !CommandMember!
+     CommandMember
 ========================
 
-=> Creator
-=> Tob say
-=> GCreator
-=> Apakah
-=> Rate
+ Creator
+ Tob say
+ GCreator
+ Apakah
+ Rate
 
 ========================
-    !Command Creator!
+    Command Creator
 ========================
 
-=> Admadd @
-=> Admrem @
-=> Adminlist
-=> InviteMeTo:
+ Admadd @
+ Admrem @
+ Adminlist
+ InviteMeTo:
 
 ========================
-     !Command Admin!
+     Command Admin
 ========================
 
-=> Id
-=> Mid
-=> Me
-=> Urloff
-=> Urlon
-=> Ginfo
-=> Cancel
-=> Gn
-=> Cname:
-=> Cstatus:
-=> Gcreator:inv
-=> Out
-=> Invite
-=> Cn
-=> Gift
-=> Respon
-=> Tagall
-=> Glist
-=> Spam:
-=> Check > Absen
-=> Steal home @
-=> Steal dp @
+ Id
+ Mid
+ Me
+ Urloff
+ Urlon
+ Ginfo
+ Cancel
+ Gn
+ Cname:
+ Cstatus:
+ Gcreator:inv
+ Out
+ Invite
+ Gift
+ Respon
+ Tagall
+ Glist
+ Spam:
+ Check > Absen
+ Steal home @
+ Steal dp @
 
 ========================
-      !CommandBot!
+      CommandBot
 ========================
 
-K on/off
-Join on/off
-Comment on/off
-Autolike on/off
+ K on/off
+ Join on/off
+ Comment on/off
+ Share on/off
 
 ========================
-     !Command Mimic!
+     Command Mimic
 ========================
 
-=> Mimic:on
-=> Mimic @
-=> Mimic:add: @
-=> Mimic:del: @
-=> ListTarget
+ Mimic:on
+ Mimic:add: @
+ Mimic:del: @
+ ListTarget
 
 ========================
-    !CommandPenting!
+    CommandPenting
 ========================
 
-=> Guest On/Off
-=> Mad On/Off
-=> Qr On/Off
-=> Protect On/Off
-=> Ban @ 
-=> Unban @
-=> Kill Ban
-=> Kill @
-=> Nk
-=> Vk
-=> Mayhem
+ Guest On/Off
+ Mad On/Off
+ Qr On/Off
+ Protect On/Off
+ Ban @ 
+ Unban @
+ Kill Ban
+ Kill @
+ Nk
+ Vk
+ Mayhem
 
 =========================
 BOT : TOBY
@@ -1817,7 +1815,7 @@ def bot(op):
                     _name = msg.text.replace("Mayhem","")
                     gs = cl.getGroup(msg.to)
                     gs = ki.getGroup(msg.to)
-                    cl.sendText(msg.to,"「 Mayhem 」\nMayhem is STARTING♪\n' abort' to abort♪")
+                    cl.sendText(msg.to,"「 Mayhem\nMayhem is STARTING♪\n' abort' to abort♪")
                     ki.sendText(msg.to,"「 Mayhem 」\n46 victims shall yell hul·la·ba·loo♪\n/ˌhələbəˈlo͞o,ˈhələbəˌlo͞o/")
                     targets = []
                     for g in gs.members:

@@ -2,6 +2,7 @@
 
 import TOBY
 import requests
+import BeautifulSoup
 from TOBY.lib.curve.ttypes import *
 from datetime import datetime
 # https://kaijento.github.io/2017/05/19/web-scraping-youtube.com/
@@ -31,9 +32,9 @@ sys.setdefaultencoding('utf-8')
 # image_path = 'tmp/tmp.jpg'
 
 helpMessage ="""
-==============================
-       !CommandMember!
-==============================
+========================
+     !CommandMember!
+========================
 
 => Creator
 => Tob say
@@ -41,18 +42,18 @@ helpMessage ="""
 => Apakah
 => Rate
 
-==============================
-       !Command Creator!
-==============================
+========================
+    !Command Creator!
+========================
 
 => Admadd @
 => Admrem @
 => Adminlist
 => InviteMeTo:
 
-==============================
-       !Command Admin!
-==============================
+========================
+     !Command Admin!
+========================
 
 => Id
 => Mid
@@ -77,9 +78,18 @@ helpMessage ="""
 => Steal + Mid
 => Steal @
 
-==============================
-       !Command Mimic!
-==============================
+========================
+      !CommandBot!
+========================
+
+K on/off
+Join on/off
+Comment on/off
+Autolike on/off
+
+========================
+     !Command Mimic!
+========================
 
 => Mimic:on
 => Mimic @
@@ -87,9 +97,9 @@ helpMessage ="""
 => Mimic:del: @
 => ListTarget
 
-==============================
-       !CommandPenting!
-==============================
+========================
+    !CommandPenting!
+========================
 
 => Guest On/Off
 => Mad On/Off
@@ -103,7 +113,7 @@ helpMessage ="""
 => Vk
 => Mayhem
 
-==============================
+=========================
 BOT : TOBY
 SUPPORT BY : CYBER BOT CRIME
 Hanya Admin Yang Bisa Menggunakan Bot

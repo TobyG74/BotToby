@@ -74,8 +74,8 @@ helpMessage ="""
 => Glist
 => Spam:
 => Check > Absen
-=> Steal + Mid
-=> Steal @
+=> Steal home @
+=> Steal dp @
 
 ========================
       !CommandBot!
@@ -1649,32 +1649,6 @@ def bot(op):
 						cl.sendText(msg.to,"Updated")
 					else:
 						cl.sendText(msg.to,"Please turn on the name clock")
-
-
-            elif msg.text == "Check":
-                    cl.sendText(msg.to, "Check sider"),
-                    try:
-                        del wait2['readPoint'][msg.to]
-                        del wait2['readMember'][msg.to]
-                    except:
-                        pass
-                    wait2['readPoint'][msg.to] = msg.id
-                    wait2['readMember'][msg.to] = ""
-                    wait2['ROM'][msg.to] = {}
-                    print wait2
-            elif msg.text == "Absen":
-                    if msg.to in wait2['readPoint']:
-                        if wait2["ROM"][msg.to].items() == []:
-                            chiya = ""
-                        else:
-                            chiya = ""
-                            for rom in wait2["ROM"][msg.to].items():
-                                print rom
-                                chiya += rom[1] + "\n"
-
-                        cl.sendText(msg.to, "People who readed %s\nthat's it\n\nPeople who have ignored reads\n%sIt is abnormal ♪\n\nReading point creation date n time:\n[%s]"  % (wait2['readMember'][msg.to],chiya,setTime[msg.to]))
-                    else:
-                        cl.sendText(msg.to, "An already read point has not been set.\n「set」you can send ♪ read point will be created ♪")
 #-----------------------------------------------
             elif msg.text in ["Tagall"]:
               if msg.from_ in admin:
@@ -1709,10 +1683,6 @@ def bot(op):
 							invsend = 0
 							Ticket = cl.reissueGroupTicket(msg.to)
 							ki.acceptGroupInvitationByTicket(msg.to,Ticket)
-							time.sleep(0.2)
-							kk.acceptGroupInvitationByTicket(msg.to,Ticket)
-							time.sleep(0.2)
-							kc.acceptGroupInvitationByTicket(msg.to,Ticket)
 							time.sleep(0.2)
 							G = cl.getGroup(msg.to)
 							G.preventJoinByTicket = True
@@ -2012,7 +1982,7 @@ def bot(op):
                         cl.sendText(msg.to, "Kelebihan batas :v")
 #-----------------------------------------------
             elif msg.text == "Check":
-                    cl.sendText(msg.to, "hmm..")
+                    cl.sendText(msg.to, "Siderss")
                     try:
                         del wait2['readPoint'][msg.to]
                         del wait2['readMember'][msg.to]
@@ -2089,13 +2059,30 @@ def bot(op):
                 jawab = ("Ya","Tidak")
                 jawaban = random.choice(jawab)
                 cl.sendText(msg.to,jawaban)
-            elif "Rate " in msg.text:
-                tanya = msg.text.replace("Rate ","")
+            elif "Rate" in msg.text:
+                tanya = msg.text.replace("Rate","")
                 jawab = ("10%","20%","30%","40%","50%","60%","70%","80%","90%","100%")
                 jawaban = random.choice(jawab)
                 cl.sendText(msg.to,jawaban)
 #-----------------------------------------------
-            elif ".music" in msg.text.lower():
+            elif "Stalk " in msg.text:
+                print "[Command]Stalk executing"
+                stalkID = msg.text.replace("Stalk ","")
+                subprocess.call(["instaLooter",stalkID,"tmp/","-n","1"])
+                files = glob.glob("tmp/*.jpg")
+                for file in files:
+                    os.rename(file,"tmp/tmp.jpg")
+                fileTmp = glob.glob("tmp/tmp.jpg")
+                if not fileTmp:
+                    cl.sendText(msg.to, "Image not found, maybe the account haven't post a single picture or the account is private")
+                    print "[Command]Stalk,executed - no image found"
+                else:
+                    image = upload_tempimage(client)
+                    cl.sendText(msg.to, format(image['link']))
+                    subprocess.call(["sudo","rm","-rf","tmp/tmp.jpg"])
+                    print "[Command]Stalk executed - succes"
+#----------------------------------------------
+            elif ".Music" in msg.text.lower():
 	            songname = msg.text.lower().replace(".music","")
 	            params = {"songname":" songname"}
 	            r = requests.get('https://ide.fdlrcn.com/workspace/yumi-apis/joox?' + urllib.urlencode(params))
@@ -2194,8 +2181,8 @@ def bot(op):
                 else:
                     cl.sendText(msg.to,"Command DiTolak")
                     ki.sendText(msg.to,"Command DiTolak")
-                    cl.sendText(msg.to,"Admin Tidak Bisa Menggunakan")
-                    ki.sendText(msg.to,"Admin Tidak Bisa Menggunakan")
+                    cl.sendText(msg.to,"Admin atau Member Tidak Bisa Menggunakan")
+                    ki.sendText(msg.to,"Admin atau Member Tidak Bisa Menggunakan")
 
             elif msg.text in ["Adminlist","adminlist"]:
               if msg.from_ in creator:
@@ -2262,9 +2249,9 @@ def bot(op):
                    except:
                       pass
 #------------------------------------------------------
-            elif "Steal @" in msg.text:            
+            elif "Steal dp @" in msg.text:            
                    print "[Command]dp executing"
-                   _name = msg.text.replace("Steal @","")
+                   _name = msg.text.replace("Steal dp @","")
                    _nametarget = _name.rstrip('  ')
                    gs = cl.getGroup(msg.to)
                    targets = []
@@ -2282,6 +2269,27 @@ def bot(op):
                            except:
                                pass
                    print "[Command]dp executed"
+#------------------------------------------
+            elif "Steal home @" in msg.text:
+                print "[Command]dp executing"
+                _name = msg.text.replace("Steal home @","")
+                _nametarget = _name.rstrip('  ')
+                gs = cl.getGroup(msg.to)
+                targets = []
+                for g in gs.members:
+                    if _nametarget == g.displayName:
+                        targets.append(g.mid)
+                if targets == []:                                                                   ki.sendText(msg.to,"Contact not found")
+                else:
+                    for target in targets:
+                        try:
+                            contact = cl.getContact(target)
+                            cu = cl.channel.getCover(target)
+                            path = str(cu)
+                            cl.sendImageWithURL(msg.to, path)
+                        except:
+                            pass
+                print "[Command]dp executed"
 #-----------------------------------------------------------
             elif msg.text in ["Protect Off","Mode Off"]:
               if msg.from_ in admin:
@@ -2346,27 +2354,6 @@ def bot(op):
                         cl.sendText(msg.to,"Auto Block On")
                     else:
                         cl.sendText(msg.to,"Block On")
-#------------------------------------------------------
-            elif "Steal @" in msg.text:            
-                   print "[Command]dp executing"
-                   _name = msg.text.replace("Steal dp @","")
-                   _nametarget = _name.rstrip('  ')
-                   gs = cl.getGroup(msg.to)
-                   targets = []
-                   for g in gs.members:
-                       if _nametarget == g.displayName:
-                           targets.append(g.mid)
-                   if targets == []:
-                       ki.sendText(msg.to,"Contact not found")
-                   else:
-                       for target in targets:
-                           try:
-                               contact = cl.getContact(target)
-                               path = "http://dl.profile.line-cdn.net/" + contact.pictureStatus
-                               cl.sendImageWithURL(msg.to, path)
-                           except:
-                               pass
-                   print "[Command]dp executed"
 #-----------------------------------------------
             elif msg.from_ in mimic["target"] and mimic["status"] == True and mimic["target"][msg.from_] == True:
             	text = msg.text

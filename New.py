@@ -308,7 +308,7 @@ def bot(op):
                 group = random.choice(KAC).getGroup(op.param1)
                 cb = Message()
                 cb.to = op.param1
-                cb.text = random.choice(KAC).getContact(op.param2).displayName + " [MemberBaru]\n\nSelamat Datang" + random.choice(KAC).getContact(op.param2).displayName + " di [" + group.name + "]\nJGN NAKAL OK!!" + "\n\nCreator => " + group.creator.displayName
+                cb.text = random.choice(KAC).getContact(op.param2).displayName + " [MemberBaru]\n\nSelamat Datang" + random.choice(KAC).getContact(op.param2).displayName + " di [" + group.name + "]\n\nJGN NAKAL OK!!" + "\n\nCreator Grup => " + group.creator.displayName
                 random.choice(KAC).sendMessage(cb)
         if op.type == 15:
             if op.param2 in Bots:
@@ -337,6 +337,17 @@ def bot(op):
                     X.preventJoinByTicket = True
                     kk.updateGroup(X)
                     Ti = kk.reissueGroupTicket(op.param1)
+
+                if op.param3 in Bmid:
+                    if op.param2 in Cmid:
+                        X = kc.getGroup(op.param1)
+                        X.preventJoinByTicket = False
+                        kc.updateGroup(X)
+                        Ti = ki.reissueGroupTicket(op.param1)
+                        kk.acceptGroupInvitationByTicket(op.param1,Ti)
+                        X.preventJoinByTicket = True
+                        kc.updateGroup(X)
+                        Ti = ki.reissueGroupTicket(op.param1)
 
         if op.type == 13:
             print op.param1

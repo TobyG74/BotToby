@@ -228,6 +228,7 @@ def sendMessage(to, text, contentMetadata={}, contentType=0):
         messageReq[to] = -1
     messageReq[to] += 1
 
+
 def sendMessage(to, text, contentMetadata={}, contentType=0):
     mes = Message()
     mes.to, mes.from_ = to, profile.mid
@@ -244,8 +245,8 @@ def NOTIFIED_READ_MESSAGE(op):
             if Name in wait2['readMember'][op.param1]:
                 pass
             else:
-                wait2['readMember'][op.param1] += "\n・" + Name
-                wait2['ROM'][op.param1][op.param2] = "・" + Name
+                wait2['readMember'][op.param1] += "\n�9�9" + Name
+                wait2['ROM'][op.param1][op.param2] = "�9�9" + Name
         else:
             pass
     except:
@@ -268,8 +269,8 @@ def bot(op):
         if op.type == 10:
            if wait["ProtectQR"] == True:
                if op.param2 not in Bots:
+                   G = cl.getGroup(op.param1)
                    G = ki.getGroup(op.param1)
-                   G = kk.getGroup(op.param1)
                    G.preventJoinByTicket = True
                    ki.kickoutFromGroup(op.param1,[op.param2])
                    cl.updateGroup(G)
@@ -285,7 +286,7 @@ def bot(op):
 
         if op.type == 17:
             if op.param2 not in Bots:
-                joinblacklist = op.param2.replace("·",',')
+                joinblacklist = op.param2.replace("��",',')
                 joinblacklistX = joinblacklist.split(",")
                 matched_list = []
                 for tag in wait["blacklist"]:
@@ -299,13 +300,36 @@ def bot(op):
                 group = random.choice(KAC).getGroup(op.param1)
                 cb = Message()
                 cb.to = op.param1
-                cb.text = random.choice(KAC).getContact(op.param2).displayName + " [MemberBaru]\n\nSelamat Datang" + random.choice(KAC).getContact(op.param2).displayName + " di [" + group.name + "]\n\nJGN NAKAL OK!!" + "\n\nCreator Grup => " + group.creator.displayName
+                cb.text = random.choice(KAC).getContact(op.param2).displayName + " [NewMemb]\n\nSelamat Datang" + random.choice(KAC).getContact(op.param2).displayName + " di [" + group.name + "]\nJGN NAKAL OK!!" + "\n\nCreator => " + group.creator.displayName
                 random.choice(KAC).sendMessage(cb)
         if op.type == 15:
             if op.param2 in Bots:
                 return
             ki.sendText(op.param1, "Good Bye Kaka")
             print "MemberLeft"
+        if op.type == 13:
+            if op.param3 in mid:
+                if op.param2 in Amid:
+                    G = Amid.getGroup(op.param1)
+                    G.preventJoinByTicket = False
+                    Amid.updateGroup(G)
+                    Ticket = Amid.reissueGroupTicket(op.param1)
+                    cl.acceptGroupInvitationByTicket(op.param1,Ticket)
+                    G.preventJoinByTicket = True
+                    Amid.updateGroup(G)
+                    Ticket = Amid.reissueGroupTicket(op.param1)
+
+            if op.param3 in Amid:
+                if op.param2 in Bmid:
+                    X = kk.getGroup(op.param1)
+                    X.preventJoinByTicket = False
+                    kk.updateGroup(X)
+                    Ti = kk.reissueGroupTicket(op.param1)
+                    ki.acceptGroupInvitationByTicket(op.param1,Ti)
+                    X.preventJoinByTicket = True
+                    kk.updateGroup(X)
+                    Ti = kk.reissueGroupTicket(op.param1)
+
         if op.type == 13:
             print op.param1
             print op.param2
@@ -2512,6 +2536,7 @@ def bot(op):
 					elapsed_time = time.time() - start
 					cl.sendText(msg.to, "%sseconds" % (elapsed_time))
 					ki.sendText(msg.to, "%sseconds" % (elapsed_time))
+					kk.sendText(msg.to, "%sseconss" % (elapsed_time))
 
 #------------------------------------------------------------------
             elif msg.text in ["Ban"]:
